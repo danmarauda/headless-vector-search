@@ -1,0 +1,21 @@
+              - name: supabase-embeddings-generator
+                uses: supabase/embeddings-generator@v0.0.5
+            
+
+            name: 'generate_embeddings'
+on: # run on main branch changes
+  push:
+    branches:
+      - main
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: supabase/embeddings-generator@v0.x.x # Find the latest version in the Marketplace
+        with:
+          supabase-url: 'https://yzltnncuozwctpkzwjry.supabase.co'
+          supabase-service-role-key: ${{ secrets.eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl6bHRubmN1b3p3Y3Rwa3p3anJ5Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTY5Nzg1MjA2MSwiZXhwIjoyMDEzNDI4MDYxfQ.779mOJN4wHKuhs-K8SyuZUGex_653iR_RvNbuj6VEfY }}
+          openai-key: ${{ secrets.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 }}
+          docs-root-path: 'docs' # the path to the root of your md(x) files
